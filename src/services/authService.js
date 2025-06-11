@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL.replace(/\/$/, ''); // elimina barra final si hay
 
 export async function loginUser(credentials) {
   const response = await fetch(`${API_URL}/api/login`, {
@@ -11,6 +11,5 @@ export async function loginUser(credentials) {
     throw new Error('Credenciales incorrectas');
   }
 
-  const data = await response.json();
-  return data; // <-- debe contener { token: '...' }
+  return await response.json();
 }
