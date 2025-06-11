@@ -26,7 +26,7 @@ ChartJS.register(
   Legend,
   ChartDataLabels
 );
-
+const API_URL = import.meta.env.VITE_API_URL.replace(/\/$/, ''); // elimina barra final si hay
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);
@@ -47,7 +47,7 @@ const Dashboard = () => {
     }
 
     // Verificamos el token con el backend
-    fetch('http://localhost:3000/api/dashboard', {
+    fetch(`${API_URL}/api/dashboard`, {
       headers: {
         Authorization: 'Bearer ' + token,
       },
