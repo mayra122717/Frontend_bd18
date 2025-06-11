@@ -1,5 +1,7 @@
+const API_URL = import.meta.env.VITE_API_URL;
+
 export async function loginUser(credentials) {
-  const response = await fetch('http://localhost:3000/api/login', {
+  const response = await fetch(`${API_URL}/api/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(credentials),
@@ -12,5 +14,3 @@ export async function loginUser(credentials) {
   const data = await response.json();
   return data; // <-- debe contener { token: '...' }
 }
-
- 
